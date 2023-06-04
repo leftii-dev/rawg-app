@@ -31,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${bebas_neue.variable} ${raleway.variable}`}>
-      <body className='font-body text-body'>{children}</body>
+      <body className='font-body text-body bg-primary-100'>{children}</body>
     </html>
   )
 }
