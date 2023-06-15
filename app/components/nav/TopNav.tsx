@@ -3,10 +3,15 @@ import Link from 'next/link'
 import NavLink from './NavLink'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { TfiClose } from 'react-icons/tfi'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function TopNav() {
   const [toggleMenu, setToggleMenu] = useState(false)
+  const pathName = usePathname()
+  useEffect(() => {
+    setToggleMenu(false)
+  }, [pathName])
 
   return(
     <nav className='flex flex-col bg-primary-200 justify-center md:flex-row md:justify-between'>
@@ -36,20 +41,18 @@ export default function TopNav() {
         </div>
       </div>
 
-      <div id='links' className={`${toggleMenu ? 'flex' : 'hidden'} bg-primary-300 md:bg-primary-200 drop-shadow-lg md:drop-shadow-none md:flex md:ml-auto md:p-3`}>
-        {/* md: */}
+      <div id='links' className={`${toggleMenu ? 'flex' : 'hidden'} bg-primary-300 drop-shadow-lg 
+                                  md:bg-primary-200 md:drop-shadow-none md:flex md:ml-auto md:p-3`}>
         <ul id='navlink-list' 
-            className='flex items-center drop-shadow-lg  text-center w-full'>
+            className='flex items-center text-center w-full'>
           <li className='transition-colors ease-linear border-b border-secondary-200 w-full py-3  hover:bg-secondary-500
-                        md:border-none '>
+                        md:border-none md:hover:bg-primary-200 md:hover:text-secondary-100'>
             <NavLink
               href='/games'
               title='Top Games'
             />
           </li>
         </ul>
-
-        {/* sm: */}
       </div>
     </nav>
   )
