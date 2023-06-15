@@ -1,5 +1,6 @@
 import 'globals.css'
 import { Bebas_Neue, Raleway } from 'next/font/google'
+import TopNav from 'components/nav/TopNav';
 
 export const metadata = {
   title: 'RAWG App',
@@ -31,7 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${bebas_neue.variable} ${raleway.variable}`}>
-      <body className='font-body text-body bg-primary-100'>{children}</body>
+      <body className='font-body text-body bg-primary-100'>
+        <TopNav />
+        {children}
+      
+      </body>
     </html>
   )
 }
